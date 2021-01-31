@@ -1,0 +1,13 @@
+export declare const randomId: () => string;
+export declare const randomChar: () => string;
+export declare const randomInt: (exclMax: number) => number;
+export declare const createSequence: <T>(length: number, cb: (index: number) => T) => T[];
+export declare const shuffle: <T>(values: T[]) => T[];
+export declare const strictMapGet: <T, K>(map: Map<K, T>, key: K) => T;
+export declare const assertUnique: <T>(map: Map<T, any>, key: T) => void;
+export declare const clone: <T>(value: T) => T;
+export declare const noop: () => void;
+export declare const createNumericIndex: (start?: number) => (name: string) => number;
+export declare const fromBase26: (value: string) => number;
+export declare const toBase26: (number: number) => string;
+export declare const gcd: (a: number, b: number) => number;

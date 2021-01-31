@@ -1,0 +1,14 @@
+import { Rect } from '../geometry/types';
+import { ElementAttributes, StrictSelect } from './types';
+export declare const attr: (el: Element, ...attributeRecords: ElementAttributes[]) => void;
+export declare const strictSelect: StrictSelect;
+export declare const strictFormElement: (formEl: HTMLFormElement, name: string) => HTMLInputElement | RadioNodeList;
+export declare const strictFieldsetElement: (fieldsetEl: HTMLFieldSetElement, name: string) => HTMLInputElement | (Element & RadioNodeList);
+export declare const strictFieldsetRadioNodes: (fieldsetEl: HTMLFieldSetElement, name: string) => Element & RadioNodeList;
+export declare const strictFormRadioNodes: (formEl: HTMLFormElement, name: string) => RadioNodeList;
+export declare const strictGetData: (el: HTMLElement | SVGElement, key: string) => string;
+export declare const strictFind: <T>(elements: T[], predicate: (value: T, index: number, obj: T[]) => boolean) => T;
+export declare const getKeys: <T>(obj: T) => (keyof T & string)[];
+export declare const getRectElRect: (rectEl: SVGRectElement) => Rect;
+export declare const setRectElRect: (rectEl: SVGRectElement, rect: Partial<Rect>) => void;
+export declare const loadImage: (src: string) => Promise<HTMLImageElement>;

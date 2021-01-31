@@ -1,0 +1,22 @@
+import { Point, Positions, Rect, SidesRect, StringRect } from './types';
+export declare const rectContainsPoint: (rect: Rect, point: Point) => boolean;
+export declare const insideRect: ({ x, y, width, height }: Rect, offset?: number) => Rect;
+export declare const getBoundingRect: (rects: Rect[]) => Rect | undefined;
+export declare const rectIntersection: (a: Rect, b: Rect) => Rect | undefined;
+export declare const scaleRect: ({ x, y, width, height }: Rect, { x: sx, y: sy }: Point) => Rect;
+export declare const rectToStringRect: ({ x, y, width, height }: Rect) => StringRect;
+export declare const stringRectToRect: ({ x, y, width, height }: StringRect) => Rect;
+export declare const growRect: (rect: Rect, ...args: number[]) => {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+};
+export declare const rectToSidesRect: ({ x, y, width, height }: Rect) => SidesRect;
+export declare const sidesRectToRect: ({ top, right, bottom, left }: SidesRect) => Rect;
+export declare const translateRect: (rect: Rect, delta: Point) => Rect;
+export declare const growSidesRectByDelta: (sidesRect: SidesRect, delta: Point, origin: Positions) => Record<"left" | "right" | "bottom" | "top", number>;
+export declare const scaleSidesRect: (sidesRect: SidesRect, scale: Point) => Record<"left" | "right" | "bottom" | "top", number>;
+export declare const scaleRectFrom: <T extends Rect>(bounds: Rect, appRect: T, delta: Point, origin: Positions) => T | undefined;
+export declare const scaleRectFromBounds: <T extends Rect>(rect: T, fromBounds: Rect, toBounds: Rect) => T;
+export declare const flipRectInBounds: <T extends Rect>(rect: T, bounds: Rect, flipX: boolean, flipY: boolean) => T;

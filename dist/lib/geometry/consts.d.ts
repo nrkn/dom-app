@@ -1,0 +1,13 @@
+export declare const LEFT = "left";
+export declare const RIGHT = "right";
+export declare const TOP = "top";
+export declare const BOTTOM = "bottom";
+export declare const XCENTER = "xCenter";
+export declare const YCENTER = "yCenter";
+export declare const xSideNames: readonly ["left", "right"];
+export declare const ySideNames: readonly ["top", "bottom"];
+export declare const centerNames: readonly ["xCenter", "yCenter"];
+export declare const sideNames: readonly ["left", "right", "top", "bottom"];
+export declare const xPositionNames: readonly ["left", "xCenter", "right"];
+export declare const yPositionNames: readonly ["top", "yCenter", "bottom"];
+export declare const positionNames: readonly ["left", "xCenter", "right", "top", "yCenter", "bottom"];

@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.rectToPathData = exports.quadTRel = exports.quadT = exports.quadRel = exports.quad = exports.curveSRel = exports.curveS = exports.curveRel = exports.curve = exports.vertRel = exports.vert = exports.horizRel = exports.horiz = exports.lineRel = exports.line = exports.moveRel = exports.move = exports.close = exports.pathData = void 0;
+const join = (...args) => args.join(' ');
+exports.pathData = join;
+const pointArgs = ({ x, y }) => [x, y];
+const pathPoint = (prefix, { x, y }) => join(prefix, x, y);
+exports.close = () => 'Z';
+exports.move = (point) => pathPoint('M', point);
+exports.moveRel = (delta) => pathPoint('m', delta);
+exports.line = (point) => pathPoint('L', point);
+exports.lineRel = (delta) => pathPoint('l', delta);
+exports.horiz = (x) => join('H', x);
+exports.horizRel = (dx) => join('h', dx);
+exports.vert = (y) => join('V', y);
+exports.vertRel = (y) => join('v', y);
+exports.curve = (ctrl1, ctrl2, end) => join('C', ...pointArgs(ctrl1), ...pointArgs(ctrl2), ...pointArgs(end));
+exports.curveRel = (ctrl1, ctrl2, end) => join('c', ...pointArgs(ctrl1), ...pointArgs(ctrl2), ...pointArgs(end));
+exports.curveS = (ctrl, end) => join('S', ...pointArgs(ctrl), ...pointArgs(end));
+exports.curveSRel = (ctrl, end) => join('s', ...pointArgs(ctrl), ...pointArgs(end));
+exports.quad = (ctrl, end) => join('Q', ...pointArgs(ctrl), ...pointArgs(end));
+exports.quadRel = (ctrl, end) => join('q', ...pointArgs(ctrl), ...pointArgs(end));
+exports.quadT = (point) => pathPoint('T', point);
+exports.quadTRel = (point) => pathPoint('t', point);
+exports.rectToPathData = (rect) => join(exports.move(rect), exports.horizRel(rect.width), exports.vertRel(rect.height), exports.horizRel(-rect.width), exports.close());
+//# sourceMappingURL=path-data.js.map
