@@ -1,0 +1,24 @@
+{
+  "name": "dom-app",
+  "version": "0.0.1",
+  "description": "Library for building browser apps",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrkn/dom-app.git"
+  },
+  "keywords": [],
+  "author": "Nik Coughlin <nrkn.com@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nrkn/dom-app/issues"
+  },
+  "homepage": "https://github.com/nrkn/dom-app#readme",
+  "dependencies": {
+    "object-fit-math": "^1.0.0"
+  }
+}
