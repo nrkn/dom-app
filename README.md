@@ -1,14 +1,15 @@
 # dom-app
 
-Library of functions for building browser apps
+Library of functions for building browser apps.
+
+This is not a framework, it's just where things I've been using a lot lately 
+end up.
 
 ```js
-import { $header, $main, $section, $footer, $h1, $h2, $p, $img } from 'dom-app'
-
 const elements = [
   $header( 
     $h1( 
-      $img( { src: '/img/logo.svg' alt: 'My Logo' } ),
+      $img( { src: '/img/logo.svg', alt: 'My Logo' } ),
       'My App'       
     ) 
   ),
@@ -24,5 +25,14 @@ const elements = [
   )
 ]
 
-document.body.append( ...elements )
+const drawing = $$svg(
+  { 
+    viewBox: [ 0, 0, 100, 100 ].join( ' ' ) 
+  },
+  
+  $$rect({ x: 0, y: 0, width: 100, height: 100, fill: 'red' }),
+  $$circle({ x: 50, y: 50, r: 50, fill: 'yellow' })
+)
+
+document.body.append( ...elements, drawing )
 ```
