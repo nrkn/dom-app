@@ -10,7 +10,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.drawingMapper = exports.cloneImageData = exports.fillImageData = exports.pasteImageData = exports.copyImageData = void 0;
+exports.loadHtmlImage = exports.drawingMapper = exports.cloneImageData = exports.fillImageData = exports.pasteImageData = exports.copyImageData = void 0;
 __exportStar(require("@mojule/spa-router"), exports);
 __exportStar(require("object-fit-math"), exports);
 var copy_1 = require("@rgba-image/copy");
@@ -36,4 +36,9 @@ __exportStar(require("./lib/geometry/size"), exports);
 __exportStar(require("./lib/util"), exports);
 var mappers_1 = require("./lib/drawing/mappers");
 Object.defineProperty(exports, "drawingMapper", { enumerable: true, get: function () { return mappers_1.drawingMapper; } });
+var html_image_1 = require("./lib/drawing/mappers/html-image");
+Object.defineProperty(exports, "loadHtmlImage", { enumerable: true, get: function () { return html_image_1.loadHtmlImage; } });
+const s = {
+    'paddingLeft': '1rem'
+};
 //# sourceMappingURL=index.js.map

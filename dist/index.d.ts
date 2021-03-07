@@ -18,3 +18,4 @@ export * from './lib/geometry/scale';
 export * from './lib/geometry/size';
 export * from './lib/util';
 export { drawingMapper } from './lib/drawing/mappers';
+export { loadHtmlImage } from './lib/drawing/mappers/html-image';
