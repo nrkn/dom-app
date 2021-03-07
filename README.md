@@ -56,7 +56,9 @@ logoEl.remove()
 drawingEl.remove()
 ```
 
-## exports
+## Default exports
+
+A slew of junk I use is exported by `/src/index.ts`:
 
 ### HTML Element factories
 
@@ -68,9 +70,10 @@ import { div, span } from 'dom-app'
 const el = div( { id: 'foo' }, span( 'Hello' ), ' World' )
 ```
 
-Attributes are a `Record<string,string>`
+Attributes are a `Record<string,any>` and values are converted to string via
+`value => String( value )`, with the following exception
 
-The `style` attribute is treated specially, the value is expected to be 
+If the key is `style` and the value is not a string, the value is expected to be 
 a `Partial<CSSStyleDeclaration>`:
 
 ```ts
@@ -137,6 +140,104 @@ import { s } from 'dom-app'
 
 const el = s( 'custom-tagname', { id: 'foo' } )
 ```
+
+### DOM Utils
+
+Set attributes on existing element:
+
+```ts
+import { attr } from 'dom-app'
+
+const themeAttr = {
+  style: {
+    backgroundColor: 'green',
+    color: 'yellow'
+  }
+}
+
+// element, then any number of attribute records
+attr( el, { id: 'foo' }, themeAttr )
+```
+
+Instead of returning null, throw an error if the querySelector doesn't match
+anything:
+
+```ts
+import { strictSelect, ul, li } from 'dom-app'
+
+const myList = ul(
+  li( 'Bread' ),
+  li( 'Eggs' )
+)
+
+const firstLi = strictSelect( 'li', myList )
+
+// omit the parent argument to search the document - this will throw as we have
+// not appended myList to the document
+
+const listEl = strictSelect( 'ul' )
+```
+
+### Drawing mappers
+
+`async` functions that convert between different DOM drawing types
+
+The types it can map between are:
+
+```ts
+export type DrawingMapFromType = {
+  imageSource: CanvasImageSource
+  htmlImage: HTMLImageElement
+  canvas: HTMLCanvasElement
+  context: CanvasRenderingContext2D
+  imageData: ImageData
+  blob: Blob
+  svg: SVGSVGElement
+  dataUrl: string
+  size: Size
+}
+```
+
+The API is called like:
+
+```ts
+import { drawingMapper, loadHtmlImage } from 'dom-app'
+
+const imgEl = await loadHtmlImage( 'test.png' )
+
+const canvasEl = await drawingMapper.htmlImage.canvas( imgEl )
+
+const blob = await drawingMapper.canvas.blob( canvasEl )
+```
+
+You can convert from any format to any other, but converting from size to 
+anything will result in a blank image/canvas/etc
+
+### ImageData
+
+Most of the packages from [`@rgba-image`](https://github.com/rgba-image) except
+for the resizing stuff because I don't trust it
+
+Some functions are renamed for clarity:
+
+```ts
+export { copy as copyImageData } from '@rgba-image/copy'
+export { paste as pasteImageData } from '@rgba-image/paste'
+export { fill as fillImageData } from '@rgba-image/fill'
+export { clone as cloneImageData } from '@rgba-image/clone'
+```
+
+### SPA routing
+
+[Express-like routing for SPAs](https://github.com/mojule/spa-router/)
+
+```ts
+const { App } = require( 'dom-app' )
+```
+
+### Geometry
+
+A whole bunch of stuff - document later
 
 ## license
 
