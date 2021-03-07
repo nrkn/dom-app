@@ -121,9 +121,6 @@ export const strictFind = <T>(
   return result
 }
 
-export const getKeys = <T>(obj: T) =>
-  Object.keys(obj) as (keyof T & string)[]
-
 export const getRectElRect = (
   rectEl: SVGRectElement
 ) => {
@@ -154,14 +151,15 @@ export const setRectElRect = (
   rectEl.height.baseVal.value = height
 }
 
-export const loadImage = (src: string) => new Promise<HTMLImageElement>(
-  (resolve, reject) => {
-    const image = new Image()
+export const cloneElement = <T extends Element>( value: T ) => 
+  value.cloneNode( true ) as T
 
-    image.onload = () => resolve(image)
+export const cloneImageData = ( source: ImageData ) => {
+  const dest = new ImageData( source.width, source.height )
 
-    image.onerror = err => reject(err)
-
-    image.src = src
+  for( let i = 0; i < source.data.length; i++ ){
+    dest.data[ i ] = source.data[ i ]
   }
-)
+
+  return dest
+}

@@ -13,13 +13,24 @@ export const rectContainsPoint = (
   return true
 }
 
-export const insideRect = (
-  { x, y, width, height }: Rect, offset = 1
+export const contractRect = (
+  { x, y, width, height }: Rect, amount = 1
 ): Rect => {
-  x += offset / 2
-  y += offset / 2
-  width -= offset
-  height -= offset
+  x += amount
+  y += amount
+  width -= amount * 2
+  height -= amount * 2
+
+  return { x, y, width, height }
+}
+
+export const expandRect = (
+  { x, y, width, height }: Rect, amount = 1
+): Rect => {
+  x -= amount
+  y -= amount
+  width += amount * 2
+  height += amount * 2
 
   return { x, y, width, height }
 }

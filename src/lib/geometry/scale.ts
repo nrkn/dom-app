@@ -31,15 +31,15 @@ export const translateAndScalePoint = (
 }
 
 export const zoomAt = ( 
-  transform: ScaleTransform, 
+  existingTransform: ScaleTransform, 
   { scale, x, y }: ScaleTransform, 
   minScale: number 
 ) => {
   if( scale < minScale ) scale = minScale
   
   const newTransform = transformRelativeTo(
-    transform, scale, { x, y }
+    existingTransform, scale, { x, y }
   )
 
-  return Object.assign( {}, transform, newTransform)
+  return Object.assign( {}, existingTransform, newTransform)
 }
