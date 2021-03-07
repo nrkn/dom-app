@@ -4,10 +4,9 @@ import { blobToCanvas, blobToDataUrl, blobToHtmlImage, cloneBlob } from './blob'
 
 import {
   canvasToBlob, canvasToHtmlImage, cloneCanvas, canvasToImageData, createCanvas,
-  canvasToContext,
-  canvasToSvg,
-  canvasToDataUrl
+  canvasToContext, canvasToSvg, canvasToDataUrl
 } from './canvas'
+
 import { contextToImageData } from './context'
 
 import { dataUrlToCanvas, dataUrlToSvg } from './data-url'
@@ -20,7 +19,10 @@ import {
   imageSourceToSize, imageSourceToSvg
 } from './image-source'
 
-import { svgToHtmlImage, svgToSize, svgToDataUrl, createSvg, svgToCanvas } from './svg'
+import { 
+  svgToHtmlImage, svgToSize, svgToDataUrl, createSvg, svgToCanvas 
+} from './svg'
+
 import { DrawingMapper } from './types'
 
 const syncToAsync = <From, To>(sync: (from: From) => To) =>

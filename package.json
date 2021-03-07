@@ -1,6 +1,6 @@
 {
   "name": "dom-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Library for building browser apps",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -19,6 +19,14 @@
   },
   "homepage": "https://github.com/nrkn/dom-app#readme",
   "dependencies": {
+    "@mojule/spa-router": "^0.1.1",
+    "@rgba-image/clone": "^0.1.0",
+    "@rgba-image/color": "^0.1.1",
+    "@rgba-image/copy": "^0.1.2",
+    "@rgba-image/fill": "^0.1.0",
+    "@rgba-image/gray": "^0.1.0",
+    "@rgba-image/paste": "^0.1.1",
+    "@rgba-image/pixel": "^0.1.4",
     "object-fit-math": "^1.0.0"
   }
 }
