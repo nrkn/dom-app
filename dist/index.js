@@ -12,6 +12,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.drawingMapper = exports.cloneImageData = exports.fillImageData = exports.pasteImageData = exports.copyImageData = void 0;
 __exportStar(require("@mojule/spa-router"), exports);
+__exportStar(require("object-fit-math"), exports);
 var copy_1 = require("@rgba-image/copy");
 Object.defineProperty(exports, "copyImageData", { enumerable: true, get: function () { return copy_1.copy; } });
 var paste_1 = require("@rgba-image/paste");

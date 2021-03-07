@@ -1,4 +1,5 @@
 export * from '@mojule/spa-router';
+export * from 'object-fit-math';
 export { copy as copyImageData } from '@rgba-image/copy';
 export { paste as pasteImageData } from '@rgba-image/paste';
 export { fill as fillImageData } from '@rgba-image/fill';
