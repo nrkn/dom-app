@@ -1,6 +1,7 @@
 import { Point, Positions, Rect, SidesRect, StringRect } from './types';
 export declare const rectContainsPoint: (rect: Rect, point: Point) => boolean;
-export declare const insideRect: ({ x, y, width, height }: Rect, offset?: number) => Rect;
+export declare const contractRect: ({ x, y, width, height }: Rect, amount?: number) => Rect;
+export declare const expandRect: ({ x, y, width, height }: Rect, amount?: number) => Rect;
 export declare const getBoundingRect: (rects: Rect[]) => Rect | undefined;
 export declare const rectIntersection: (a: Rect, b: Rect) => Rect | undefined;
 export declare const scaleRect: ({ x, y, width, height }: Rect, { x: sx, y: sy }: Point) => Rect;

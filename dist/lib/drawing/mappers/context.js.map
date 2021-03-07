@@ -1,0 +1,1 @@
+{"version":3,"file":"context.js","sourceRoot":"","sources":["../../../../src/lib/drawing/mappers/context.ts"],"names":[],"mappings":";;;AACa,QAAA,kBAAkB,GAAG,CAAC,MAAgC,EAAE,EAAE;IACrE,MAAM,SAAS,GAAG,MAAM,CAAC,YAAY,CACnC,CAAC,EAAE,CAAC,EACJ,MAAM,CAAC,MAAM,CAAC,MAAM,CAAC,KAAK,CAAC,EAAE,MAAM,CAAC,MAAM,CAAC,MAAM,CAAC,MAAM,CAAC,CAC1D,CAAA;IAED,OAAO,SAAS,CAAA;AAClB,CAAC,CAAA"}

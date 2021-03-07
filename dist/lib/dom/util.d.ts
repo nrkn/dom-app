@@ -8,7 +8,7 @@ export declare const strictFieldsetRadioNodes: (fieldsetEl: HTMLFieldSetElement,
 export declare const strictFormRadioNodes: (formEl: HTMLFormElement, name: string) => RadioNodeList;
 export declare const strictGetData: (el: HTMLElement | SVGElement, key: string) => string;
 export declare const strictFind: <T>(elements: T[], predicate: (value: T, index: number, obj: T[]) => boolean) => T;
-export declare const getKeys: <T>(obj: T) => (keyof T & string)[];
 export declare const getRectElRect: (rectEl: SVGRectElement) => Rect;
 export declare const setRectElRect: (rectEl: SVGRectElement, rect: Partial<Rect>) => void;
-export declare const loadImage: (src: string) => Promise<HTMLImageElement>;
+export declare const cloneElement: <T extends Element>(value: T) => T;
+export declare const cloneImageData: (source: ImageData) => ImageData;

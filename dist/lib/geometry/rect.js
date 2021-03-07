@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.flipRectInBounds = exports.scaleRectFromBounds = exports.scaleRectFrom = exports.scaleSidesRect = exports.growSidesRectByDelta = exports.translateRect = exports.sidesRectToRect = exports.rectToSidesRect = exports.growRect = exports.stringRectToRect = exports.rectToStringRect = exports.scaleRect = exports.rectIntersection = exports.getBoundingRect = exports.insideRect = exports.rectContainsPoint = void 0;
+exports.flipRectInBounds = exports.scaleRectFromBounds = exports.scaleRectFrom = exports.scaleSidesRect = exports.growSidesRectByDelta = exports.translateRect = exports.sidesRectToRect = exports.rectToSidesRect = exports.growRect = exports.stringRectToRect = exports.rectToStringRect = exports.scaleRect = exports.rectIntersection = exports.getBoundingRect = exports.expandRect = exports.contractRect = exports.rectContainsPoint = void 0;
 const util_1 = require("../util");
 const point_1 = require("./point");
 exports.rectContainsPoint = (rect, point) => {
@@ -14,11 +14,18 @@ exports.rectContainsPoint = (rect, point) => {
         return false;
     return true;
 };
-exports.insideRect = ({ x, y, width, height }, offset = 1) => {
-    x += offset / 2;
-    y += offset / 2;
-    width -= offset;
-    height -= offset;
+exports.contractRect = ({ x, y, width, height }, amount = 1) => {
+    x += amount;
+    y += amount;
+    width -= amount * 2;
+    height -= amount * 2;
+    return { x, y, width, height };
+};
+exports.expandRect = ({ x, y, width, height }, amount = 1) => {
+    x -= amount;
+    y -= amount;
+    width += amount * 2;
+    height += amount * 2;
     return { x, y, width, height };
 };
 exports.getBoundingRect = (rects) => {

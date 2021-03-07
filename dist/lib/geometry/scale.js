@@ -17,10 +17,10 @@ exports.translateAndScalePoint = ({ x, y }, { x: tx, y: ty, scale }) => {
     y /= scale;
     return { x, y };
 };
-exports.zoomAt = (transform, { scale, x, y }, minScale) => {
+exports.zoomAt = (existingTransform, { scale, x, y }, minScale) => {
     if (scale < minScale)
         scale = minScale;
-    const newTransform = exports.transformRelativeTo(transform, scale, { x, y });
-    return Object.assign({}, transform, newTransform);
+    const newTransform = exports.transformRelativeTo(existingTransform, scale, { x, y });
+    return Object.assign({}, existingTransform, newTransform);
 };
 //# sourceMappingURL=scale.js.map

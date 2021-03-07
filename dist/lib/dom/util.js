@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loadImage = exports.setRectElRect = exports.getRectElRect = exports.getKeys = exports.strictFind = exports.strictGetData = exports.strictFormRadioNodes = exports.strictFieldsetRadioNodes = exports.strictFieldsetElement = exports.strictFormElement = exports.strictSelect = exports.attr = void 0;
+exports.cloneImageData = exports.cloneElement = exports.setRectElRect = exports.getRectElRect = exports.strictFind = exports.strictGetData = exports.strictFormRadioNodes = exports.strictFieldsetRadioNodes = exports.strictFieldsetElement = exports.strictFormElement = exports.strictSelect = exports.attr = void 0;
 const styleKey = 'style';
 exports.attr = (el, ...attributeRecords) => {
     attributeRecords.forEach(attributes => {
@@ -74,7 +74,6 @@ exports.strictFind = (elements, predicate) => {
         throw Error(`Expected predicate to match something`);
     return result;
 };
-exports.getKeys = (obj) => Object.keys(obj);
 exports.getRectElRect = (rectEl) => {
     const { x: ex, y: ey, width: ew, height: eh } = rectEl;
     const x = ex.baseVal.value;
@@ -92,10 +91,12 @@ exports.setRectElRect = (rectEl, rect) => {
     rectEl.width.baseVal.value = width;
     rectEl.height.baseVal.value = height;
 };
-exports.loadImage = (src) => new Promise((resolve, reject) => {
-    const image = new Image();
-    image.onload = () => resolve(image);
-    image.onerror = err => reject(err);
-    image.src = src;
-});
+exports.cloneElement = (value) => value.cloneNode(true);
+exports.cloneImageData = (source) => {
+    const dest = new ImageData(source.width, source.height);
+    for (let i = 0; i < source.data.length; i++) {
+        dest.data[i] = source.data[i];
+    }
+    return dest;
+};
 //# sourceMappingURL=util.js.map
