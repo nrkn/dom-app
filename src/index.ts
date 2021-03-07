@@ -25,3 +25,7 @@ export * from './lib/geometry/size'
 export * from './lib/util'
 
 export { drawingMapper } from './lib/drawing/mappers'
+
+const s: Partial<CSSStyleDeclaration> = {
+  'paddingLeft': '1rem'
+}
