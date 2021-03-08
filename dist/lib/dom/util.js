@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.cloneImageData = exports.cloneElement = exports.setRectElRect = exports.getRectElRect = exports.strictFind = exports.strictGetData = exports.strictFormRadioNodes = exports.strictFieldsetRadioNodes = exports.strictFieldsetElement = exports.strictFormElement = exports.strictSelect = exports.attr = void 0;
+exports.loadFont = exports.cloneImageData = exports.cloneElement = exports.setRectElRect = exports.getRectElRect = exports.strictFind = exports.strictGetData = exports.strictFormRadioNodes = exports.strictFieldsetRadioNodes = exports.strictFieldsetElement = exports.strictFormElement = exports.strictSelect = exports.attr = void 0;
 const styleKey = 'style';
 exports.attr = (el, ...attributeRecords) => {
     attributeRecords.forEach(attributes => {
@@ -98,5 +98,10 @@ exports.cloneImageData = (source) => {
         dest.data[i] = source.data[i];
     }
     return dest;
+};
+exports.loadFont = async (name, src) => {
+    const fontFace = new FontFace(name, `url(${src})`, {});
+    await fontFace.load();
+    document['fonts'].add(fontFace);
 };
 //# sourceMappingURL=util.js.map

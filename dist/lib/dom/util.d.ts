@@ -12,3 +12,4 @@ export declare const getRectElRect: (rectEl: SVGRectElement) => Rect;
 export declare const setRectElRect: (rectEl: SVGRectElement, rect: Partial<Rect>) => void;
 export declare const cloneElement: <T extends Element>(value: T) => T;
 export declare const cloneImageData: (source: ImageData) => ImageData;
+export declare const loadFont: (name: string, src: string) => Promise<void>;

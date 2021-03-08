@@ -163,3 +163,14 @@ export const cloneImageData = ( source: ImageData ) => {
 
   return dest
 }
+
+
+declare const FontFace: any
+
+export const loadFont = async ( name: string, src: string ) => {
+  const fontFace = new FontFace( name, `url(${ src })`, {} )
+
+  await fontFace.load()
+
+  document[ 'fonts' ].add( fontFace )
+}
