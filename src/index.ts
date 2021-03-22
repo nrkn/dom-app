@@ -27,7 +27,3 @@ export * from './lib/util'
 export { drawingMapper } from './lib/drawing/mappers'
 
 export { loadHtmlImage } from './lib/drawing/mappers/html-image'
-
-const s: Partial<CSSStyleDeclaration> = {
-  'paddingLeft': '1rem'
-}
