@@ -5,8 +5,9 @@ const predicates_1 = require("../../dom/predicates");
 const util_1 = require("../../dom/util");
 const canvas_1 = require("./canvas");
 const html_image_1 = require("./html-image");
-exports.imageSourceToContext = (source) => canvas_1.canvasToContext(exports.imageSourceToCanvas(source));
-exports.imageSourceToCanvas = (source) => {
+const imageSourceToContext = (source) => canvas_1.canvasToContext(exports.imageSourceToCanvas(source));
+exports.imageSourceToContext = imageSourceToContext;
+const imageSourceToCanvas = (source) => {
     const width = Number(source.width);
     const height = Number(source.height);
     const el = canvas_1.createCanvas({ width, height });
@@ -14,31 +15,38 @@ exports.imageSourceToCanvas = (source) => {
     context.drawImage(source, 0, 0);
     return el;
 };
-exports.imageSourceToImageData = (source) => {
+exports.imageSourceToCanvas = imageSourceToCanvas;
+const imageSourceToImageData = (source) => {
     const context = exports.imageSourceToContext(source);
     const imageData = context.getImageData(0, 0, Number(source.width), Number(source.height));
     return imageData;
 };
-exports.imageSourceToHtmlImage = async (source) => {
+exports.imageSourceToImageData = imageSourceToImageData;
+const imageSourceToHtmlImage = async (source) => {
     if (source instanceof HTMLImageElement) {
         return util_1.cloneElement(source);
     }
     return html_image_1.loadHtmlImage(exports.imageSourceToCanvas(source).toDataURL());
 };
-exports.imageSourceToElement = async (source) => {
+exports.imageSourceToHtmlImage = imageSourceToHtmlImage;
+const imageSourceToElement = async (source) => {
     if (predicates_1.isElement(source)) {
         return util_1.cloneElement(source);
     }
     return html_image_1.loadHtmlImage(exports.imageSourceToCanvas(source).toDataURL());
 };
-exports.imageSourceToSize = (source) => {
+exports.imageSourceToElement = imageSourceToElement;
+const imageSourceToSize = (source) => {
     const width = Number(source.width);
     const height = Number(source.height);
     return { width, height };
 };
-exports.imageSourceToSvg = async (source) => html_image_1.htmlImageToSvg(await html_image_1.loadHtmlImage(exports.imageSourceToCanvas(source).toDataURL()));
-exports.imageSourceToDataUrl = async (source) => exports.imageSourceToCanvas(source).toDataURL();
-exports.cloneImageSource = async (source) => {
+exports.imageSourceToSize = imageSourceToSize;
+const imageSourceToSvg = async (source) => html_image_1.htmlImageToSvg(await html_image_1.loadHtmlImage(exports.imageSourceToCanvas(source).toDataURL()));
+exports.imageSourceToSvg = imageSourceToSvg;
+const imageSourceToDataUrl = async (source) => exports.imageSourceToCanvas(source).toDataURL();
+exports.imageSourceToDataUrl = imageSourceToDataUrl;
+const cloneImageSource = async (source) => {
     if (source instanceof HTMLImageElement) {
         return util_1.cloneElement(source);
     }
@@ -46,4 +54,5 @@ exports.cloneImageSource = async (source) => {
         return canvas_1.cloneCanvas(source);
     return canvas_1.canvasToHtmlImage(exports.imageSourceToCanvas(source));
 };
+exports.cloneImageSource = cloneImageSource;
 //# sourceMappingURL=image-source.js.map

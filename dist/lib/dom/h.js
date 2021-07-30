@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.wbr = exports.video = exports.$var = exports.ul = exports.u = exports.track = exports.tr = exports.title = exports.time = exports.thead = exports.th = exports.tfoot = exports.textarea = exports.template = exports.td = exports.tbody = exports.table = exports.sup = exports.summary = exports.sub = exports.style = exports.strong = exports.span = exports.source = exports.small = exports.slot = exports.select = exports.section = exports.script = exports.samp = exports.$s = exports.ruby = exports.rt = exports.rp = exports.q = exports.progress = exports.pre = exports.picture = exports.param = exports.p = exports.output = exports.option = exports.optgroup = exports.ol = exports.object = exports.noscript = exports.nav = exports.meter = exports.meta = exports.menu = exports.marquee = exports.mark = exports.map = exports.main = exports.link = exports.li = exports.legend = exports.label = exports.kbd = exports.ins = exports.input = exports.img = exports.iframe = exports.i = exports.html = exports.hr = exports.hgroup = exports.header = exports.head = exports.h6 = exports.h5 = exports.h4 = exports.h3 = exports.h2 = exports.h1 = exports.frameset = exports.frame = exports.form = exports.footer = exports.font = exports.figure = exports.figcaption = exports.fieldset = exports.embed = exports.em = exports.dt = exports.dl = exports.div = exports.dir = exports.dialog = exports.dfn = exports.details = exports.del = exports.dd = exports.datalist = exports.data = exports.colgroup = exports.col = exports.code = exports.cite = exports.caption = exports.canvas = exports.button = exports.br = exports.body = exports.blockquote = exports.bdo = exports.bdi = exports.basefont = exports.base = exports.b = exports.audio = exports.aside = exports.article = exports.area = exports.applet = exports.address = exports.abbr = exports.a = exports.styleToString = exports.htmlElementFactory = exports.text = exports.fragment = exports.h = void 0;
+exports.h2 = exports.h1 = exports.frameset = exports.frame = exports.form = exports.footer = exports.font = exports.figure = exports.figcaption = exports.fieldset = exports.embed = exports.em = exports.dt = exports.dl = exports.div = exports.dir = exports.dialog = exports.dfn = exports.details = exports.del = exports.dd = exports.datalist = exports.data = exports.colgroup = exports.col = exports.code = exports.cite = exports.caption = exports.canvas = exports.button = exports.br = exports.body = exports.blockquote = exports.bdo = exports.bdi = exports.base = exports.b = exports.audio = exports.aside = exports.article = exports.area = exports.applet = exports.address = exports.abbr = exports.a = exports.styleToString = exports.htmlElementFactory = exports.text = exports.fragment = exports.h = void 0;
+exports.source = exports.small = exports.slot = exports.select = exports.section = exports.script = exports.samp = exports.$s = exports.ruby = exports.rt = exports.rp = exports.q = exports.progress = exports.pre = exports.picture = exports.param = exports.p = exports.output = exports.option = exports.optgroup = exports.ol = exports.object = exports.noscript = exports.nav = exports.meter = exports.meta = exports.menu = exports.marquee = exports.mark = exports.map = exports.main = exports.link = exports.li = exports.legend = exports.label = exports.kbd = exports.ins = exports.input = exports.img = exports.iframe = exports.i = exports.html = exports.hr = exports.hgroup = exports.header = exports.head = exports.h6 = exports.h5 = exports.h4 = exports.h3 = void 0;
+exports.wbr = exports.video = exports.$var = exports.ul = exports.u = exports.track = exports.tr = exports.title = exports.time = exports.thead = exports.th = exports.tfoot = exports.textarea = exports.template = exports.td = exports.tbody = exports.table = exports.sup = exports.summary = exports.sub = exports.style = exports.strong = exports.span = void 0;
 const predicates_1 = require("./predicates");
 const util_1 = require("./util");
-exports.h = (name, ...args) => {
+const h = (name, ...args) => {
     const el = document.createElement(name);
     args.forEach(arg => {
         if (predicates_1.isNode(arg) || typeof arg === 'string') {
@@ -15,19 +17,24 @@ exports.h = (name, ...args) => {
     });
     return el;
 };
-exports.fragment = (...args) => {
+exports.h = h;
+const fragment = (...args) => {
     const documentFragment = document.createDocumentFragment();
     documentFragment.append(...args);
     return documentFragment;
 };
-exports.text = (...values) => document.createTextNode(values.join(''));
-exports.htmlElementFactory = (name) => (...args) => exports.h(name, ...args);
-exports.styleToString = (style) => {
+exports.fragment = fragment;
+const text = (...values) => document.createTextNode(values.join(''));
+exports.text = text;
+const htmlElementFactory = (name) => (...args) => exports.h(name, ...args);
+exports.htmlElementFactory = htmlElementFactory;
+const styleToString = (style) => {
     const { style: rules } = exports.div();
     Object.assign(rules, style);
     const { cssText } = rules;
     return cssText;
 };
+exports.styleToString = styleToString;
 exports.a = exports.htmlElementFactory('a');
 exports.abbr = exports.htmlElementFactory('abbr');
 exports.address = exports.htmlElementFactory('address');
@@ -38,7 +45,6 @@ exports.aside = exports.htmlElementFactory('aside');
 exports.audio = exports.htmlElementFactory('audio');
 exports.b = exports.htmlElementFactory('b');
 exports.base = exports.htmlElementFactory('base');
-exports.basefont = exports.htmlElementFactory('basefont');
 exports.bdi = exports.htmlElementFactory('bdi');
 exports.bdo = exports.htmlElementFactory('bdo');
 exports.blockquote = exports.htmlElementFactory('blockquote');

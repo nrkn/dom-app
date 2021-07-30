@@ -1,8 +1,8 @@
 import { HArg } from './types';
-export declare const h: <K extends "object" | "link" | "small" | "sub" | "sup" | "track" | "progress" | "a" | "abbr" | "address" | "applet" | "area" | "article" | "aside" | "audio" | "b" | "base" | "basefont" | "bdi" | "bdo" | "blockquote" | "body" | "br" | "button" | "canvas" | "caption" | "cite" | "code" | "col" | "colgroup" | "data" | "datalist" | "dd" | "del" | "details" | "dfn" | "dialog" | "dir" | "div" | "dl" | "dt" | "em" | "embed" | "fieldset" | "figcaption" | "figure" | "font" | "footer" | "form" | "frame" | "frameset" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "head" | "header" | "hgroup" | "hr" | "html" | "i" | "iframe" | "img" | "input" | "ins" | "kbd" | "label" | "legend" | "li" | "main" | "map" | "mark" | "marquee" | "menu" | "meta" | "meter" | "nav" | "noscript" | "ol" | "optgroup" | "option" | "output" | "p" | "param" | "picture" | "pre" | "q" | "rp" | "rt" | "ruby" | "s" | "samp" | "script" | "section" | "select" | "slot" | "source" | "span" | "strong" | "style" | "summary" | "table" | "tbody" | "td" | "template" | "textarea" | "tfoot" | "th" | "thead" | "time" | "title" | "tr" | "u" | "ul" | "var" | "video" | "wbr">(name: K, ...args: HArg[]) => HTMLElementTagNameMap[K];
+export declare const h: <K extends keyof HTMLElementTagNameMap>(name: K, ...args: HArg[]) => HTMLElementTagNameMap[K];
 export declare const fragment: (...args: (Node | string)[]) => DocumentFragment;
 export declare const text: (...values: string[]) => Text;
-export declare const htmlElementFactory: <K extends "object" | "link" | "small" | "sub" | "sup" | "track" | "progress" | "a" | "abbr" | "address" | "applet" | "area" | "article" | "aside" | "audio" | "b" | "base" | "basefont" | "bdi" | "bdo" | "blockquote" | "body" | "br" | "button" | "canvas" | "caption" | "cite" | "code" | "col" | "colgroup" | "data" | "datalist" | "dd" | "del" | "details" | "dfn" | "dialog" | "dir" | "div" | "dl" | "dt" | "em" | "embed" | "fieldset" | "figcaption" | "figure" | "font" | "footer" | "form" | "frame" | "frameset" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "head" | "header" | "hgroup" | "hr" | "html" | "i" | "iframe" | "img" | "input" | "ins" | "kbd" | "label" | "legend" | "li" | "main" | "map" | "mark" | "marquee" | "menu" | "meta" | "meter" | "nav" | "noscript" | "ol" | "optgroup" | "option" | "output" | "p" | "param" | "picture" | "pre" | "q" | "rp" | "rt" | "ruby" | "s" | "samp" | "script" | "section" | "select" | "slot" | "source" | "span" | "strong" | "style" | "summary" | "table" | "tbody" | "td" | "template" | "textarea" | "tfoot" | "th" | "thead" | "time" | "title" | "tr" | "u" | "ul" | "var" | "video" | "wbr">(name: K) => (...args: HArg[]) => HTMLElementTagNameMap[K];
+export declare const htmlElementFactory: <K extends keyof HTMLElementTagNameMap>(name: K) => (...args: HArg[]) => HTMLElementTagNameMap[K];
 export declare const styleToString: (style: Partial<CSSStyleDeclaration>) => string;
 export declare const a: (...args: HArg[]) => HTMLAnchorElement;
 export declare const abbr: (...args: HArg[]) => HTMLElement;
@@ -14,7 +14,6 @@ export declare const aside: (...args: HArg[]) => HTMLElement;
 export declare const audio: (...args: HArg[]) => HTMLAudioElement;
 export declare const b: (...args: HArg[]) => HTMLElement;
 export declare const base: (...args: HArg[]) => HTMLBaseElement;
-export declare const basefont: (...args: HArg[]) => HTMLBaseFontElement;
 export declare const bdi: (...args: HArg[]) => HTMLElement;
 export declare const bdo: (...args: HArg[]) => HTMLElement;
 export declare const blockquote: (...args: HArg[]) => HTMLQuoteElement;

@@ -38,7 +38,4 @@ var mappers_1 = require("./lib/drawing/mappers");
 Object.defineProperty(exports, "drawingMapper", { enumerable: true, get: function () { return mappers_1.drawingMapper; } });
 var html_image_1 = require("./lib/drawing/mappers/html-image");
 Object.defineProperty(exports, "loadHtmlImage", { enumerable: true, get: function () { return html_image_1.loadHtmlImage; } });
-const s = {
-    'paddingLeft': '1rem'
-};
 //# sourceMappingURL=index.js.map

@@ -8,7 +8,7 @@ const util_1 = require("../../dom/util");
 const html_image_1 = require("./html-image");
 const image_source_1 = require("./image-source");
 const settings_1 = require("./settings");
-exports.loadSvgImage = (src) => new Promise((resolve, reject) => {
+const loadSvgImage = (src) => new Promise((resolve, reject) => {
     const el = s_1.image();
     const crossorigin = settings_1.getCrossOrigin();
     if (crossorigin) {
@@ -18,7 +18,8 @@ exports.loadSvgImage = (src) => new Promise((resolve, reject) => {
     el.onload = () => resolve(el);
     el.href.baseVal = src;
 });
-exports.createSvg = ({ width, height }) => {
+exports.loadSvgImage = loadSvgImage;
+const createSvg = ({ width, height }) => {
     const el = s_1.svg();
     const crossorigin = settings_1.getCrossOrigin();
     if (crossorigin) {
@@ -27,19 +28,22 @@ exports.createSvg = ({ width, height }) => {
     util_1.attr(el, { width, height, viewBox: `0 0 ${width} ${height}` });
     return el;
 };
-exports.svgToDataUrl = (source) => {
+exports.createSvg = createSvg;
+const svgToDataUrl = (source) => {
     source.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', 'http://www.w3.org/2000/svg');
     source.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xlink', 'http://www.w3.org/1999/xlink');
     const xml = new XMLSerializer().serializeToString(source);
     const dataUrl = `${consts_1.svgDataUrlHeader}${btoa(xml)}`;
     return dataUrl;
 };
-exports.svgToHtmlImage = async (source) => {
+exports.svgToDataUrl = svgToDataUrl;
+const svgToHtmlImage = async (source) => {
     const dataUrl = exports.svgToDataUrl(source);
     const el = await html_image_1.loadHtmlImage(dataUrl);
     return el;
 };
-exports.svgToSize = async (source) => {
+exports.svgToHtmlImage = svgToHtmlImage;
+const svgToSize = async (source) => {
     try {
         return exports.sizeFromSvgViewBox(source);
     }
@@ -52,8 +56,10 @@ exports.svgToSize = async (source) => {
         throw err;
     }
 };
-exports.svgToCanvas = async (source) => image_source_1.imageSourceToCanvas(await exports.svgToHtmlImage(source));
-exports.sizeFromSvgViewBox = async (source) => {
+exports.svgToSize = svgToSize;
+const svgToCanvas = async (source) => image_source_1.imageSourceToCanvas(await exports.svgToHtmlImage(source));
+exports.svgToCanvas = svgToCanvas;
+const sizeFromSvgViewBox = async (source) => {
     const viewBox = source.getAttribute('viewBox');
     const error = Error('Expected viewBox to be set');
     if (viewBox === null || viewBox.trim() === '')
@@ -68,7 +74,8 @@ exports.sizeFromSvgViewBox = async (source) => {
     }
     throw error;
 };
-exports.svgDataUrlToSvg = (source) => {
+exports.sizeFromSvgViewBox = sizeFromSvgViewBox;
+const svgDataUrlToSvg = (source) => {
     source = source.slice(consts_1.svgDataUrlHeader.length);
     const xml = atob(source);
     const el = h_1.div();
@@ -77,4 +84,5 @@ exports.svgDataUrlToSvg = (source) => {
     svgEl.remove();
     return svgEl;
 };
+exports.svgDataUrlToSvg = svgDataUrlToSvg;
 //# sourceMappingURL=svg.js.map

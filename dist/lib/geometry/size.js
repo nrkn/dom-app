@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.zoomToFit = void 0;
 const object_fit_math_1 = require("object-fit-math");
-exports.zoomToFit = (parent, child) => {
+const zoomToFit = (parent, child) => {
     const { x: fx, y: fy, width: fw } = object_fit_math_1.fitAndPosition(parent, child, 'contain', '50%', '50%');
     const scale = fw / child.width;
     const x = fx / scale;
@@ -10,4 +10,5 @@ exports.zoomToFit = (parent, child) => {
     const transform = { x, y, scale };
     return transform;
 };
+exports.zoomToFit = zoomToFit;
 //# sourceMappingURL=size.js.map

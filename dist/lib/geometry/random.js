@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.randomConvexPoly = void 0;
 const util_1 = require("../util");
-exports.randomConvexPoly = (n) => {
+const randomConvexPoly = (n) => {
     const xPool = util_1.createSequence(n, () => Math.random()).sort();
     const yPool = util_1.createSequence(n, () => Math.random()).sort();
     const minX = xPool[0];
@@ -69,4 +69,5 @@ exports.randomConvexPoly = (n) => {
     }
     return points;
 };
+exports.randomConvexPoly = randomConvexPoly;
 //# sourceMappingURL=random.js.map

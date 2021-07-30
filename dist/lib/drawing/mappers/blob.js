@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.stringifyBlob = exports.cloneBlob = exports.blobToCanvas = exports.blobToHtmlImage = exports.blobToDataUrl = void 0;
 const html_image_1 = require("./html-image");
 const image_source_1 = require("./image-source");
-exports.blobToDataUrl = (source) => new Promise((resolve, reject) => {
+const blobToDataUrl = (source) => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onloadend = () => {
         const { result } = reader;
@@ -14,9 +14,12 @@ exports.blobToDataUrl = (source) => new Promise((resolve, reject) => {
     };
     reader.readAsDataURL(source);
 });
-exports.blobToHtmlImage = async (source) => html_image_1.loadHtmlImage(await exports.blobToDataUrl(source));
-exports.blobToCanvas = async (source) => image_source_1.imageSourceToCanvas(await exports.blobToHtmlImage(source));
-exports.cloneBlob = (source) => new Promise((resolve, reject) => {
+exports.blobToDataUrl = blobToDataUrl;
+const blobToHtmlImage = async (source) => html_image_1.loadHtmlImage(await exports.blobToDataUrl(source));
+exports.blobToHtmlImage = blobToHtmlImage;
+const blobToCanvas = async (source) => image_source_1.imageSourceToCanvas(await exports.blobToHtmlImage(source));
+exports.blobToCanvas = blobToCanvas;
+const cloneBlob = (source) => new Promise((resolve, reject) => {
     const r = new FileReader();
     r.onload = () => {
         if (r.result instanceof ArrayBuffer) {
@@ -27,5 +30,7 @@ exports.cloneBlob = (source) => new Promise((resolve, reject) => {
     r.onerror = reject;
     r.readAsArrayBuffer(source);
 });
-exports.stringifyBlob = ({ size, type }) => JSON.stringify({ blob: { size, type } });
+exports.cloneBlob = cloneBlob;
+const stringifyBlob = ({ size, type }) => JSON.stringify({ blob: { size, type } });
+exports.stringifyBlob = stringifyBlob;
 //# sourceMappingURL=blob.js.map

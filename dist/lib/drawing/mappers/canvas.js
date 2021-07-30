@@ -7,7 +7,7 @@ const context_1 = require("./context");
 const html_image_1 = require("./html-image");
 const image_data_1 = require("./image-data");
 const settings_1 = require("./settings");
-exports.createCanvas = (size) => {
+const createCanvas = (size) => {
     const el = h_1.canvas();
     const crossorigin = settings_1.getCrossOrigin();
     if (crossorigin) {
@@ -17,22 +17,30 @@ exports.createCanvas = (size) => {
     el.height = size.height;
     return el;
 };
-exports.canvasToImageData = (source) => context_1.contextToImageData(exports.canvasToContext(source));
-exports.canvasToHtmlImage = (source) => html_image_1.loadHtmlImage(source.toDataURL());
-exports.canvasToBlob = (source) => new Promise((resolve, reject) => {
+exports.createCanvas = createCanvas;
+const canvasToImageData = (source) => context_1.contextToImageData(exports.canvasToContext(source));
+exports.canvasToImageData = canvasToImageData;
+const canvasToHtmlImage = (source) => html_image_1.loadHtmlImage(source.toDataURL());
+exports.canvasToHtmlImage = canvasToHtmlImage;
+const canvasToBlob = (source) => new Promise((resolve, reject) => {
     source.toBlob(blob => {
         if (blob === null)
             return reject(Error('Expected blob, got null'));
         resolve(blob);
     });
 });
-exports.canvasToDataUrl = (source) => source.toDataURL();
-exports.canvasToSvg = async (source) => html_image_1.htmlImageToSvg(await html_image_1.loadHtmlImage(source.toDataURL()));
-exports.cloneCanvas = (source) => image_data_1.imageDataToCanvas(exports.canvasToImageData(source));
-exports.canvasToContext = (source) => {
+exports.canvasToBlob = canvasToBlob;
+const canvasToDataUrl = (source) => source.toDataURL();
+exports.canvasToDataUrl = canvasToDataUrl;
+const canvasToSvg = async (source) => html_image_1.htmlImageToSvg(await html_image_1.loadHtmlImage(source.toDataURL()));
+exports.canvasToSvg = canvasToSvg;
+const cloneCanvas = (source) => image_data_1.imageDataToCanvas(exports.canvasToImageData(source));
+exports.cloneCanvas = cloneCanvas;
+const canvasToContext = (source) => {
     const context = source.getContext('2d');
     if (context === null)
         throw Error('Expected CanvasRenderingContext2D');
     return context;
 };
+exports.canvasToContext = canvasToContext;
 //# sourceMappingURL=canvas.js.map

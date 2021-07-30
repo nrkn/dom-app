@@ -4,35 +4,39 @@ exports.getEdgePositions = exports.findYPosition = exports.findXPosition = expor
 const util_1 = require("../util");
 const predicates_1 = require("./predicates");
 const rect_1 = require("./rect");
-exports.getXPosition = ({ x, width }, position) => {
+const getXPosition = ({ x, width }, position) => {
     switch (position) {
         case 'left': return x;
         case 'right': return x + width;
         case 'xCenter': return x + width / 2;
     }
 };
-exports.getYPosition = ({ y, height }, position) => {
+exports.getXPosition = getXPosition;
+const getYPosition = ({ y, height }, position) => {
     switch (position) {
         case 'top': return y;
         case 'bottom': return y + height;
         case 'yCenter': return y + height / 2;
     }
 };
-exports.findXPosition = (values) => {
+exports.getYPosition = getYPosition;
+const findXPosition = (values) => {
     for (let i = 0; i < values.length; i++) {
         const value = values[i];
         if (predicates_1.isXPosition(value))
             return value;
     }
 };
-exports.findYPosition = (values) => {
+exports.findXPosition = findXPosition;
+const findYPosition = (values) => {
     for (let i = 0; i < values.length; i++) {
         const value = values[i];
         if (predicates_1.isYPosition(value))
             return value;
     }
 };
-exports.getEdgePositions = (rect, growBy, point) => {
+exports.findYPosition = findYPosition;
+const getEdgePositions = (rect, growBy, point) => {
     const outerRect = rect_1.growRect(rect, growBy * 2);
     const innerRect = util_1.clone(rect);
     if (!rect_1.rectContainsPoint(outerRect, point))
@@ -56,4 +60,5 @@ exports.getEdgePositions = (rect, growBy, point) => {
     }
     return positions;
 };
+exports.getEdgePositions = getEdgePositions;
 //# sourceMappingURL=position.js.map

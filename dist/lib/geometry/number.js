@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gcd = exports.toBase26 = exports.fromBase26 = exports.createNumericIndex = exports.snapToGrid = void 0;
-exports.snapToGrid = (value, grid) => Math.floor(value / grid) * grid;
-exports.createNumericIndex = (start = 0) => {
+const snapToGrid = (value, grid) => Math.floor(value / grid) * grid;
+exports.snapToGrid = snapToGrid;
+const createNumericIndex = (start = 0) => {
     const ids = new Map();
     const getNext = (name) => {
         let index = ids.get(name);
@@ -14,7 +15,8 @@ exports.createNumericIndex = (start = 0) => {
     };
     return getNext;
 };
-exports.fromBase26 = (value) => {
+exports.createNumericIndex = createNumericIndex;
+const fromBase26 = (value) => {
     if (!/^[a-z]+$/.test(value)) {
         throw Error('Expected non-empty string comprised of a-z');
     }
@@ -25,7 +27,8 @@ exports.fromBase26 = (value) => {
     }
     return out;
 };
-exports.toBase26 = (number) => {
+exports.fromBase26 = fromBase26;
+const toBase26 = (number) => {
     if (number <= 0) {
         throw Error('Expected > 0');
     }
@@ -39,7 +42,8 @@ exports.toBase26 = (number) => {
     }
     return out;
 };
-exports.gcd = (a, b) => {
+exports.toBase26 = toBase26;
+const gcd = (a, b) => {
     let temp;
     while (b !== 0) {
         temp = a % b;
@@ -48,4 +52,5 @@ exports.gcd = (a, b) => {
     }
     return a;
 };
+exports.gcd = gcd;
 //# sourceMappingURL=number.js.map

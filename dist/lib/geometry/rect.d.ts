@@ -15,9 +15,9 @@ export declare const growRect: (rect: Rect, ...args: number[]) => {
 };
 export declare const rectToSidesRect: ({ x, y, width, height }: Rect) => SidesRect;
 export declare const sidesRectToRect: ({ top, right, bottom, left }: SidesRect) => Rect;
-export declare const translateRect: (rect: Rect, delta: Point) => Rect;
-export declare const growSidesRectByDelta: (sidesRect: SidesRect, delta: Point, origin: Positions) => Record<"left" | "right" | "bottom" | "top", number>;
-export declare const scaleSidesRect: (sidesRect: SidesRect, scale: Point) => Record<"left" | "right" | "bottom" | "top", number>;
+export declare const translateRect: (rect: Rect, delta: Point) => Point & import("./types").Size;
+export declare const growSidesRectByDelta: (sidesRect: SidesRect, delta: Point, origin: Positions) => SidesRect;
+export declare const scaleSidesRect: (sidesRect: SidesRect, scale: Point) => SidesRect;
 export declare const scaleRectFrom: <T extends Rect>(bounds: Rect, appRect: T, delta: Point, origin: Positions) => T | undefined;
 export declare const scaleRectFromBounds: <T extends Rect>(rect: T, fromBounds: Rect, toBounds: Rect) => T;
 export declare const flipRectInBounds: <T extends Rect>(rect: T, bounds: Rect, flipX: boolean, flipY: boolean) => T;

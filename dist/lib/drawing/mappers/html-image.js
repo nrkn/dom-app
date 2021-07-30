@@ -4,7 +4,7 @@ exports.htmlImageToSvg = exports.htmlImageToSvgImage = exports.loadHtmlImage = v
 const util_1 = require("../../dom/util");
 const settings_1 = require("./settings");
 const svg_1 = require("./svg");
-exports.loadHtmlImage = async (src) => {
+const loadHtmlImage = async (src) => {
     const el = new Image();
     const crossorigin = settings_1.getCrossOrigin();
     if (crossorigin) {
@@ -14,17 +14,20 @@ exports.loadHtmlImage = async (src) => {
     await el.decode();
     return el;
 };
-exports.htmlImageToSvgImage = async (source) => {
+exports.loadHtmlImage = loadHtmlImage;
+const htmlImageToSvgImage = async (source) => {
     const { width, height, src } = source;
     const el = await svg_1.loadSvgImage(src);
     util_1.attr(el, { width, height });
     return el;
 };
-exports.htmlImageToSvg = async (source) => {
+exports.htmlImageToSvgImage = htmlImageToSvgImage;
+const htmlImageToSvg = async (source) => {
     const { width, height } = source;
     const el = svg_1.createSvg({ width, height });
     const svgImageEl = await exports.htmlImageToSvgImage(source);
     el.append(svgImageEl);
     return el;
 };
+exports.htmlImageToSvg = htmlImageToSvg;
 //# sourceMappingURL=html-image.js.map
